@@ -1,5 +1,14 @@
-$color: #000;
+// $color: #000;
 
-body {
-  color: $color;
+// body {
+//   color: $color;
+// }
+
+aside {
+  ul {
+    margin: 0;
+  }
+  a {
+    color: red;
+  }
 }
