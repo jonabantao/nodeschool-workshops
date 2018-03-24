@@ -1,14 +1,110 @@
-// $color: #000;
+// Step 1: Variables
+$color: #000;
 
-// body {
-//   color: $color;
-// }
+body {
+  color: $color;
+}
 
+// Step 2: Nesting
 aside {
   ul {
     margin: 0;
   }
   a {
     color: red;
+  }
+}
+
+// Step 3: Imports
+@import 'variables';
+
+body {
+  color: $color
+}
+
+// Step 4: Mixins
+@mixin border($thickness) {
+  border-width: $thickness
+}
+
+img {
+  @include border(10px)
+}
+
+// Step 5: Mixin Content
+@mixin border($thickness) {
+  border-width: $thickness;
+  @content;
+}
+img {
+  @include border(10px) {
+    border-style: solid;
+  }
+}
+
+// Step 6: Extend/Inheritance
+.push-button {
+  background-color: blue;
+}
+
+.main-button {
+  @extend .push-button;
+  font-weight: bold;
+}
+
+// Step 7: Operators
+$page-width: 1400px;
+$padding: 20px;
+
+.container {
+  padding: $padding;
+  width: 0.8 * $page-width - 2 * $padding;
+}
+
+// Step 8: Nested Properties
+.sassy {
+  border: {
+    width: 10px;
+    color: red;
+    radius: 5px;
+  }
+}
+
+// Step 9: Parent Selector
+button {
+  color: black;
+  &:focus {
+    color: red;
+  }
+}
+
+// Step 10: Interpolation
+$selector: article;
+$color: #ff0000;
+
+#{$selector} {
+  color: $color;
+}
+
+// Step 11: Each Iterator
+@each $big-cat in cheetah, puma, jaguar, panther, tiger, leopard {
+  .#{$big-cat}-picture {
+    padding: 3em;
+  }
+}
+
+// Step 12: For Loop
+@for $i from 1 through 6 {
+  h#{$i} {
+    font-size: 24px - 3px * $i;
+  }
+}
+
+// Step 13: While Loop
+$i: 1;
+@while $i < 7 {
+  h#{$i} {
+    font-size: 24px - 3px * $i;
+    $i: $i + 1;
   }
 }
