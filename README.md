@@ -6,3 +6,7 @@ All workshops can be found at [Nodeschool Workshops](https://nodeschool.io/#work
 
 ### Completed
 * Sass
+
+### In Progress
+* Functional Programing
+* Learnyoubash
