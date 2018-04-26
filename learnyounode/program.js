@@ -63,14 +63,66 @@
 //   data.forEach(filename => console.log(filename));
 // });
 
-// Step 7 - HTTP Client - GET request to arg
-const https = require('http');
+// // Step 7 - HTTP Client - GET request to arg
+// const https = require('http');
 
-https.get(process.argv[2], (response) => {
-  response.setEncoding('utf8');
-  response.on('data', console.log);
-  response.on('error', console.error);
-}).on('err', console.error);
+// https.get(process.argv[2], (response) => {
+//   response.setEncoding('utf8');
+//   response.on('data', console.log);
+//   response.on('error', console.error);
+// }).on('err', console.error);
 
+// // Step 8 HTTP Collect - return length of chars and string
+// const https = require('http');
+// const bl = require('bl');
 
+// https.get(process.argv[2], response => {
+//   response.pipe(bl((err, data) => {
+//     if (err) {
+//       return console.error(err);
+//     }
 
+//     const res = data.toString();
+//     console.log(res.length);
+//     console.log(res);
+//   }));
+// });
+
+// // Step 9 Return requests in order
+// const http = require('http');
+// const bl = require('bl');
+
+// const urls = process.argv.slice(2);
+// let count = urls.length;
+
+// const results = [];
+
+// urls.forEach((url, index) => {
+//   http.get(url, (res) => {
+//     res.pipe(bl((err, data) => {
+//       if (err) {
+//         console.error(err);
+//       }
+
+//       results[index] = data.toString();
+//       count--;
+
+//       if (count === 0) {
+//         results.forEach((result) => {
+//           console.log(result);
+//         });
+//       }
+//     }));
+//   });
+// });
+
+// Step 10 - TCP
+const net = require('net');
+const strf = require('strftime');
+const PORT = Number(process.argv[2]);
+
+const server = net.createServer((socket) => {
+  socket.end(strf('%F %R\n'));
+});
+
+server.listen(PORT);
