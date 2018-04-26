@@ -1,0 +1,21 @@
+{
+  "name": "@jonabantao/howtonpm",
+  "version": "1.0.3",
+  "main": "index.js",
+  "scripts": {
+    "test": "node test.js"
+  },
+  "author": "",
+  "license": "ISC",
+  "description": "How-to-npm repo",
+  "dependencies": {},
+  "devDependencies": {},
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/jonabantao/nodeschool-workshops.git"
+  },
+  "bugs": {
+    "url": "https://github.com/jonabantao/nodeschool-workshops/issues"
+  },
+  "homepage": "https://github.com/jonabantao/nodeschool-workshops#readme"
+}
