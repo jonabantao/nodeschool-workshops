@@ -116,13 +116,82 @@
 //   });
 // });
 
-// Step 10 - TCP
-const net = require('net');
-const strf = require('strftime');
+// // Step 10 - TCP
+// const net = require('net');
+// const strf = require('strftime');
+// const PORT = Number(process.argv[2]);
+
+// const server = net.createServer((socket) => {
+//   socket.end(strf('%F %R\n'));
+// });
+
+// server.listen(PORT);
+
+// // Step 11 - HTTP File Server
+// const http = require('http');
+// const fs = require('fs');
+// const PORT = Number(process.argv[2]);
+// const fileLocation = process.argv[3];
+
+// const server = http.createServer((req, res) => {
+//   res.writeHead(200, { 'content-type': 'text/plain' });
+
+//   fs.createReadStream(fileLocation).pipe(res);
+// });
+
+// server.listen(PORT);
+
+// // Step 12 - HTTP UPPERCASER
+// const http = require('http');
+// const map = require('through2-map');
+// const PORT = Number(process.argv[2]);
+
+// const server = http.createServer((req, res) => {
+//   if (req.method === 'POST') {
+//     res.writeHead(200, { 'content-type': 'text/plain' });
+
+//     req.pipe(map(chunk => chunk.toString().toUpperCase()))
+//       .pipe(res);
+//   }
+// });
+
+// server.listen(PORT);
+
+// Step 13 - HTTP JSON API SERVER
+const http = require('http');
+const url = require('url');
 const PORT = Number(process.argv[2]);
 
-const server = net.createServer((socket) => {
-  socket.end(strf('%F %R\n'));
+const server = http.createServer((req, res) => {
+  const { pathname, query } = url.parse(req.url, true);
+  const ISOtime = new Date(query.iso);
+
+  res.writeHead(200, { 'Content-Type': 'application/json' });
+
+  function parseHMS(time) {
+    return JSON.stringify({
+      'hour': ISOtime.getHours(),
+      'minute': ISOtime.getMinutes(),
+      'second': ISOtime.getSeconds(),
+    });
+  }
+
+  function parseUnix(time) {
+    return JSON.stringify({ 'unixtime': ISOtime.getTime() });
+  }
+
+  function notFound() {
+    return JSON.stringify({ 'message': 'Not found' });
+  }
+
+  switch (pathname) {
+    case '/api/parsetime':
+      return res.end(parseHMS(ISOtime));
+    case '/api/unixtime':
+      return res.end(parseUnix(ISOtime));
+    default:
+      return res.end(notFound());
+  }
 });
 
 server.listen(PORT);
