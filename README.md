@@ -7,6 +7,7 @@ All workshops can be found at [Nodeschool Workshops](https://nodeschool.io/#work
 ### Completed
 * Sass
 * How to NPM
+* Expressworks
 * Learnyounode
 
 ### In Progress
