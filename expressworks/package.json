@@ -1,0 +1,26 @@
+{
+  "name": "expressworks",
+  "version": "1.0.0",
+  "description": "Express practice",
+  "main": "null",
+  "dependencies": {
+    "body-parser": "^1.18.2",
+    "express": "^4.16.3",
+    "pug": "^2.0.3",
+    "stylus": "^0.54.5"
+  },
+  "devDependencies": {},
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/jonabantao/nodeschool-workshops.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/jonabantao/nodeschool-workshops/issues"
+  },
+  "homepage": "https://github.com/jonabantao/nodeschool-workshops#readme"
+}
