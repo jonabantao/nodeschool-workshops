@@ -9,6 +9,7 @@ All workshops can be found at [Nodeschool Workshops](https://nodeschool.io/#work
 * How to NPM
 * Expressworks
 * Learnyounode
+* Learnyoumongo
 
 ### In Progress
 * Functional Programing
